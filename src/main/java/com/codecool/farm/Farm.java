@@ -32,6 +32,7 @@ class Farm {
                 animals.remove(index);
             }
         }
+
     }
 
     public List<String> getStatus() {
