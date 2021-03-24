@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Farm {
-    private List<Animal> animals;
+    private final List<Animal> animals;
 
     public Farm(List<Animal> animals) {
         this.animals = animals;
@@ -23,17 +23,13 @@ class Farm {
     }
 
     public boolean isEmpty() {
-        if (animals == null || animals.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return animals == null || animals.isEmpty();
     }
 
     public void butcher(Butcher butcher) {
-        for (Animal animal : animals) {
-            if (butcher.canButcher(animal)) {
-                animals.remove(animal);
+        for (int index = 0; index < animals.size(); index++ ) {
+            if (butcher.canButcher(animals.get(index))) {
+                animals.remove(index);
             }
         }
     }
@@ -44,7 +40,6 @@ class Farm {
             String textElement = "There is a " + animal.getSize() + " sized "
                     + animal.getClass().getSimpleName().toLowerCase() + " in the farm.";
             animalStatus.add(textElement);
-            System.out.println(textElement);
         }
         return animalStatus;
     }
